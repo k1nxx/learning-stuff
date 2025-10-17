@@ -33,6 +33,20 @@ So there are three different ways of using reset
 `git revert` is basically resetting a branch to get to code, and keep history clean
 just remember to use `git revert --continue` after merging conflicts
 
+`git stash` lets you stash current changes for later to spend time on something else without having the hassle of your non-working code
+`git stash list` lists all the stashes
+`git stash apply {stash}` just like above
+
+`git rebase` When you want to merge a branch into main and you have a bunch of merge conflicts, you can use rebase. When you merge you checkout to main and merge, making git make a new commit which tries to get both histories (All history is kept, timestamps, etc...). Rebase puts your commits on top of the current branch git checkout with git rebase main (rewriting history though it is kept by git, and after some time its then removed)
+
+Merge for safety, and rebase for local cleanup
+
+`git log --oneline --graph`
+https://www.youtube.com/watch?v=yTFC_MvwJvQ
+what does git fetch do
+git reset vs git revert
+different git parameters and how to write description for commits
+
 ## How to make proper commits
 
 Ask yourself the simple question of "If added to the code base, this code will _____". These commits should be imperative, meaning in the sense you are giving order
