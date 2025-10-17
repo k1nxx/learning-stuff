@@ -28,8 +28,6 @@ OH I GOT HACKED
 
 hacked again
 
-asdasdasd
-
 ## How to make proper commits
 
 Ask yourself the simple question of "If added to the code base, this code will _____". These commits should be imperative, meaning in the sense you are giving order
