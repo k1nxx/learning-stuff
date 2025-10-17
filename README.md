@@ -4,7 +4,7 @@
 
 `git init` initializes a new repository with the default branch name
 `git status` returns the status of the git repository
-`git add` adds the file to the current git repository
+`git add` adds the file to the current git repository (in git terms staging)
 `git commit <params> <message>` commits the added files helping to revert to previous versions just like a snapshot
 `git logs` allows to view commit history
 `git checkout <hash / commit id>` checks out to the commit
@@ -23,6 +23,8 @@ for later on you can just use `git push`
 
 `git merge <branch> <branch>` merges two branches
 `git reset` a means of resetting a branch so a given commit and removing commits after that while deciding to discard or keep the code. it works just like how we did it with `git checkout` but i mentioned that you aren't changing anything rather you are just viewing history
+
+OH I GOT HACKED
 
 ## How to make proper commits
 
