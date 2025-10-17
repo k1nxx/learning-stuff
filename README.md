@@ -24,9 +24,13 @@ for later on you can just use `git push`
 `git merge <branch> <branch>` merges two branches
 `git reset` a means of resetting a branch so a given commit and removing commits after that while deciding to discard or keep the code. it works just like how we did it with `git checkout` but i mentioned that you aren't changing anything rather you are just viewing history
 
-OH I GOT HACKED
+So there are three different ways of using reset
 
-hacked again
+1. You want to uncommit and keep the project staged, lets say you regret not putting everything in a single commit (soft)
+2. You want to uncommit and unstage, so you regret having a single commit (mixed)
+3. You completely regret these commits happened, and want to remove it from history (hard)
+
+`git revert` is basically resetting a branch to get to code, and keep history clean
 
 ## How to make proper commits
 
