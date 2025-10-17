@@ -19,6 +19,11 @@
 for later on you can just use `git push`
 `git pull` pulls updated modifications from the remote
 
+- or  add `origin main` for a specific origin
+
+`git merge <branch> <branch>` merges two branches
+`git reset` a means of resetting a branch so a given commit and removing commits after that while deciding to discard or keep the code. it works just like how we did it with `git checkout` but i mentioned that you aren't changing anything rather you are just viewing history
+
 ## How to make proper commits
 
 Ask yourself the simple question of "If added to the code base, this code will _____". These commits should be imperative, meaning in the sense you are giving order
