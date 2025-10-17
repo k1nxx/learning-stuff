@@ -13,6 +13,12 @@
 - `m` changes the default branch name or `m old new` to swap the name
 - `no-params` make a new branch or `-b` to checkout to that branch automatically (NOTE: the branch inherits code from the HEAD or you can source `new-branch source-branch`)
 
-
 `git add remote <origin name> <url>` tells git that we have a remote repository (aliased as origin)
 `git push -u <origin> <branch>` pushes a repository to a remote
+`git push --set-upstream` is used to sync branches with your HEAD branch pushing to git or you can use the `-u` just like above which will also add the branch to be synced with the HEAD branch
+for later on you can just use `git push`
+`git pull` pulls updated modifications from the remote
+
+## How to make proper commits
+
+Ask yourself the simple question of "If added to the code base, this code will _____". These commits should be imperative, meaning in the sense you are giving order
