@@ -32,6 +32,8 @@ So there are three different ways of using reset
 
 `git revert` is basically resetting a branch to get to code, and keep history clean
 
+asdasdasd
+
 ## How to make proper commits
 
 Ask yourself the simple question of "If added to the code base, this code will _____". These commits should be imperative, meaning in the sense you are giving order
