@@ -1,52 +1,189 @@
-# An introduction to git
+# 🧭 An Introduction to Git
 
-## Commands
+---
 
-`git init` initializes a new repository with the default branch name
-`git status` returns the status of the git repository
-`git add` adds the file to the current git repository (in git terms staging)
-`git commit <params> <message>` commits the added files helping to revert to previous versions just like a snapshot
-`git logs` allows to view commit history
-`git checkout <hash / commit id>` checks out to the commit
-`git branch <params> <name>`
+## 🏁 Initialization
 
-- `m` changes the default branch name or `m old new` to swap the name
-- `no-params` make a new branch or `-b` to checkout to that branch automatically (NOTE: the branch inherits code from the HEAD or you can source `new-branch source-branch`)
+**Command:** `git init`
+**Parameters:** _None_
+**Description:** Initializes a new Git repository with the default branch name.
+**Use Case:** When starting a new project or converting an existing folder into a Git repository.
 
-`git add remote <origin name> <url>` tells git that we have a remote repository (aliased as origin)
-`git push -u <origin> <branch>` pushes a repository to a remote
-`git push --set-upstream` is used to sync branches with your HEAD branch pushing to git or you can use the `-u` just like above which will also add the branch to be synced with the HEAD branch
-for later on you can just use `git push`
-`git pull` pulls updated modifications from the remote
+---
 
-- or  add `origin main` for a specific origin
+## 📋 Checking Repository Status
 
-`git merge <branch> <branch>` merges two branches
-`git reset` a means of resetting a branch so a given commit and removing commits after that while deciding to discard or keep the code. it works just like how we did it with `git checkout` but i mentioned that you aren't changing anything rather you are just viewing history
+**Command:** `git status`
+**Parameters:** _None_
+**Description:** Displays the state of the working directory and the staging area.
+**Use Case:** See which files are modified, staged, or untracked.
 
-So there are three different ways of using reset
+---
 
-1. You want to uncommit and keep the project staged, lets say you regret not putting everything in a single commit (soft)
-2. You want to uncommit and unstage, so you regret having a single commit (mixed)
-3. You completely regret these commits happened, and want to remove it from history (hard)
+## 📂 Staging and Committing
 
-`git revert` is basically resetting a branch to get to code, and keep history clean
-just remember to use `git revert --continue` after merging conflicts
+### 1. Add Files
 
-`git stash` lets you stash current changes for later to spend time on something else without having the hassle of your non-working code
-`git stash list` lists all the stashes
-`git stash apply {stash}` just like above
+**Command:** `git add <file>`
+**Parameters:**
+- `<file>` — specific file name or use `.` to add all changes
+**Description:** Adds files to the staging area (prepares them for commit).
+**Use Case:** Use before committing to include changes in the next snapshot.
 
-`git rebase` When you want to merge a branch into main and you have a bunch of merge conflicts, you can use rebase. When you merge you checkout to main and merge, making git make a new commit which tries to get both histories (All history is kept, timestamps, etc...). Rebase puts your commits on top of the current branch git checkout with git rebase main (rewriting history though it is kept by git, and after some time its then removed)
+---
 
-Merge for safety, and rebase for local cleanup
+### 2. Commit Changes
 
-`git log --oneline --graph`
-https://www.youtube.com/watch?v=yTFC_MvwJvQ
-what does git fetch do
-git reset vs git revert
-different git parameters and how to write description for commits
+**Command:** `git commit <params> -m "<message>"`
+**Parameters:**
+- `-m "<message>"` — adds a message describing the commit
+**Description:** Commits staged files and records a snapshot of your project.
+**Use Case:** Save a stable point in your code history that you can revert to later.
 
-## How to make proper commits
+---
 
-Ask yourself the simple question of "If added to the code base, this code will _____". These commits should be imperative, meaning in the sense you are giving order
+### 3. View Commit History
+
+**Command:** `git log`
+**Alternative:** `git log --oneline --graph`
+**Description:** Shows commit history, optionally as a compact visual graph.
+**Use Case:** Review the project’s change history or find specific commits.
+
+---
+
+## 🌿 Branching
+
+**Command:** `git branch <params> <name>`
+**Parameters:**
+- No params — create a new branch
+- `-b` — create and switch to the branch automatically
+- `-m old new` — rename a branch
+**Description:** Manages branches within your repository.
+**Use Case:** Isolate development for new features, fixes, or experiments.
+
+---
+
+## 🔁 Switching and Checkout
+
+**Command:** `git checkout <hash | commit-id>`
+**Description:** Switches to a specific commit, branch, or tag.
+**Use Case:** View or work from a specific state of the code.
+
+---
+
+## 🌐 Remote Repositories
+
+### 1. Add Remote
+
+**Command:** `git remote add <origin-name> <url>`
+**Description:** Links your local repo to a remote one (e.g., GitHub).
+**Use Case:** Sync your code with a remote server for collaboration or backup.
+
+---
+
+### 2. Push Changes
+
+**Command:**
+- `git push -u <origin> <branch>`
+- `git push --set-upstream` (alternative form)
+**Description:** Uploads commits from local to remote.
+**Use Case:** Push your local commits online and set the default tracking branch.
+
+---
+
+### 3. Pull Changes
+
+**Command:** `git pull`
+**Description:** Fetches and merges changes from the remote repository.
+**Use Case:** Update your local repo with remote changes.
+**Extra:** You can specify `git pull origin main` to pull from a specific branch.
+
+---
+
+### 4. Fetch Changes
+
+**Command:** `git fetch`
+**Description:** Downloads objects and refs from another repository without merging.
+**Use Case:** Update local knowledge of remote branches without changing your working files.
+**Difference from pull:** `pull = fetch + merge`
+
+---
+
+## 🔀 Merging and Rebasing
+
+### 1. Merge
+
+**Command:** `git merge <branch>`
+**Description:** Combines another branch into the current one.
+**Use Case:** Safely integrate finished work or features.
+**Note:** Merge keeps all commit history intact.
+
+---
+
+### 2. Rebase
+
+**Command:** `git rebase <branch>`
+**Description:** Reapplies commits on top of another branch (rewriting history).
+**Use Case:** Clean up local commit history before merging to main.
+**Tip:**
+- Merge = additive (preserves history)
+- Rebase = reconstructive (rewrites it)
+**After conflicts:** Use `git rebase --continue`
+
+---
+
+## 🕹 Resetting and Reverting
+
+### 1. Reset
+
+**Command:** `git reset [--soft | --mixed | --hard] <commit>`
+**Description:** Resets your branch to a specific commit.
+**Use Cases:**
+1. **Soft:** Uncommit but keep changes staged.
+2. **Mixed:** Uncommit and unstage changes.
+3. **Hard:** Completely discard commits and changes.
+
+---
+
+### 2. Revert
+
+**Command:** `git revert <commit>`
+**Description:** Creates a new commit that undoes changes from a previous one while keeping history intact.
+**Use Case:** Safely undo a commit in public repositories.
+**Tip:** Use `git revert --continue` after resolving conflicts.
+
+---
+
+## 🧳 Stashing
+
+**Command:** `git stash`
+**Additional Commands:**
+- `git stash list` — view saved stashes
+- `git stash apply {stash}` — reapply a stash
+**Description:** Temporarily saves uncommitted changes.
+**Use Case:** Switch tasks without committing incomplete work.
+
+---
+
+## 🧠 Writing Proper Commit Messages
+
+**Guideline:**
+Ask yourself — _“If added to the codebase, this code will ___.”_
+
+**Tips:**
+- Write in **imperative mood** (e.g., “Add feature X”, “Fix login bug”)
+- Keep it short but descriptive
+
+**Examples:**
+✅ `Add API authentication middleware`
+❌ `Added API authentication middleware`
+
+---
+
+## 📎 References
+
+- **YouTube Tutorial:** [Git Basics Explained](https://www.youtube.com/watch?v=yTFC_MvwJvQ)
+- **Topics to Review:**
+  - `git fetch` (see above)
+  - `git reset` vs `git revert`
+  - Common Git parameters and commit message conventions
